@@ -44,6 +44,7 @@ public class TruckController {
         if (input.getGross() == 0 || input.getNett() == 0 || input.getTare() == 0) {
             logger.warn("Weight values 0 - perhaps not entered");
         }
+        logger.info("Created truck (id {})", truck.getId());
         return truckRepository.save(truck);
     }
 
@@ -58,6 +59,7 @@ public class TruckController {
         if (input.getGross() == 0 || input.getNett() == 0 || input.getTare() == 0) {
             logger.warn("Weight values 0 - perhaps not entered");
         }
+        logger.info("Overwrote truck (id {})", truck.getId());
         return truckRepository.save(truck);
     }
 
