@@ -41,25 +41,25 @@ public class TruckController {
         truck.setTare(input.getTare());
         truck.setNett(input.getNett());
         truck.setHaulier(input.getHaulier());
-        if (input.getGross() == 0 || input.getNett() == 0 || input.getTare() == 0) {
-            logger.warn("Weight values 0 - perhaps not entered");
+        if (truck.getGross() <= 0 || truck.getTare() <= 0 || truck.getNett() <= 0) {
+            logger.warn("WARNING: Weight values 0 or negative");
         }
-        logger.info("Created truck (id {})", truck.getId());
+        logger.info("Created truck");
         return truckRepository.save(truck);
     }
 
     @PostMapping("/trucks/{id}")
     public Truck updateTruck(@PathVariable Short id, @Validated @RequestBody TruckUpdateInput input) {
         final var truck = getTruckById(id);
-        truck.setRegistration(input.getRegistration());
-        truck.setGross(input.getGross());
-        truck.setTare(input.getTare());
-        truck.setNett(input.getNett());
-        truck.setHaulier(input.getHaulier());
-        if (input.getGross() == 0 || input.getNett() == 0 || input.getTare() == 0) {
-            logger.warn("Weight values 0 - perhaps not entered");
+        if (input.getRegistration() != null) { truck.setRegistration(input.getRegistration()); }
+        if (input.getHaulier() != null) { truck.setHaulier(input.getHaulier()); }
+        if (input.getGross() != null) {truck.setGross(input.getGross()); }
+        if (input.getNett() != null) {truck.setGross(input.getNett()); }
+        if (input.getTare() != null) {truck.setGross(input.getTare()); }
+        if (truck.getGross() <= 0 || truck.getTare() <= 0 || truck.getNett() <= 0) {
+            logger.warn("WARNING: Weight values 0 or negative");
         }
-        logger.info("Overwrote truck (id {})", truck.getId());
+        logger.info("Overwrote truck (id {})", id);
         return truckRepository.save(truck);
     }
 

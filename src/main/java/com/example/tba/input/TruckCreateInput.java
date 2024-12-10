@@ -12,10 +12,10 @@ public class TruckCreateInput {
     @Size(min=1, max=45)
     private String haulier;
     @NotNull
-    private double gross;
+    private Double gross;
     @NotNull
-    private double tare;
+    private Double tare;
     @NotNull
-    private double nett;
+    private Double nett;
     private Short id;
 }

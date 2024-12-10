@@ -9,8 +9,8 @@ public class TruckUpdateInput {
     private String registration;
     @Size(min=1, max=45)
     private String haulier;
-    private double gross;
-    private double tare;
-    private double nett;
+    private Double gross;
+    private Double tare;
+    private Double nett;
     private Short id;
 }
