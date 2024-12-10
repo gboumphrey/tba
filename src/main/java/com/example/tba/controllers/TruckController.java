@@ -53,9 +53,10 @@ public class TruckController {
     }
 
     @DeleteMapping("/trucks/{id}")
-    public void deleteTruck(@PathVariable Short id) {
+    public String deleteTruck(@PathVariable Short id) {
         Truck truck = truckRepository.findById(id).orElseThrow(()->new ResponseStatusException(NOT_FOUND, "No truck with id"));
         truckRepository.deleteById(id);
+        return "Truck was deleted";
     }
 
 }
